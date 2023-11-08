@@ -80,6 +80,12 @@ async function run() {
 
     // applied jobs 
     const appliedCollection = client.db("jobsDB").collection("AppliedJobs");
+
+    app.get('/appliedJobs', async (req, res) => {
+      const cursor = appliedCollection.find()
+      const result = await cursor.toArray();
+      res.send(result);
+    })
     
     app.post('/appliedJobs', async (req, res) => {
       const newAppliedJobs = req.body;
