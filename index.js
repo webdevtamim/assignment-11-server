@@ -28,7 +28,7 @@ async function run() {
     await client.connect();
 
 
-
+    // all jobs 
     const jobCollection = client.db("jobsDB").collection("Jobs");
 
     app.get('/jobs', async (req, res) => {
@@ -74,6 +74,16 @@ async function run() {
       const id = req.params.id;
       const query = { _id: new ObjectId(id) };
       const result = await jobCollection.deleteOne(query);
+      res.send(result);
+    })
+
+
+    // applied jobs 
+    const appliedCollection = client.db("jobsDB").collection("AppliedJobs");
+    
+    app.post('/appliedJobs', async (req, res) => {
+      const newAppliedJobs = req.body;
+      const result = await appliedCollection.insertOne(newAppliedJobs);
       res.send(result);
     })
 
