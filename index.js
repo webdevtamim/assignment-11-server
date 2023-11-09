@@ -112,5 +112,5 @@ app.get('/', (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log(`JO SEEKING is running on PORT: ${port}`)
+  console.log(`JOB SEEKING is running on PORT: ${port}`)
 })
